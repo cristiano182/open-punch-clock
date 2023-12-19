@@ -1,0 +1,29 @@
+{
+  "name": "open-punch-clock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "ts-node src/application/Server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristiano182/open-punch-clock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristiano182/open-punch-clock/issues"
+  },
+  "homepage": "https://github.com/cristiano182/open-punch-clock#readme",
+  "dependencies": {
+    "fastify": "^4.25.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3"
+  }
+}
