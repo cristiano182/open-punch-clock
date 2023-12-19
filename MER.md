@@ -1,6 +1,4 @@
-```mermaid PK
-
-
+```mermaid
 erDiagram
     Company {
         int id PK
@@ -82,7 +80,5 @@ erDiagram
     Register     }|--|| Person : "many to one"
     User         ||--|| ModuleUser : "one to one"
     Module       ||--|{ ModuleUser : "one to many"
-
-
 
 ```
