@@ -1,34 +1,34 @@
 ```mermaid
 erDiagram
     Company {
-        int id PK
+        string id PK
         string name
-        string cnpj
+        string document
     }
     Client {
-        int id PK
-        int companyId FK
+        string id PK
+        string companyId FK
         string name
     }
     Aggrement {
-        int id PK
-        int clientId FK
+        string id PK
+        string clientId FK
         string name
     }
     Service {
-        int id PK
-        int aggrementId FK
+        string id PK
+        string aggrementId FK
         string name
     }
     Job {
-        int id PK
-        int serviceId FK
+        string id PK
+        string serviceId FK
         float durationMinutes
         string name
     }
     Person {
-        int id PK
-        int companyId FK
+        string id PK
+        string companyId FK
         string name
         string email
         string document
@@ -38,21 +38,22 @@ erDiagram
     }
 
     User {
-        int id PK
-        int companyId FK
+        string id PK
+        string companyId FK
         string email
         string password
+        bool status
     }
 
     Module {
-        int id PK
+        string id PK
         string name
     }
 
     ModuleUser {
-        int id PK
-        int moduleId FK
-        int userId FK
+        string id PK
+        string moduleId FK
+        string userId FK
         bool create
         bool read
         bool update
@@ -60,13 +61,13 @@ erDiagram
     }
 
     Register {
-        int id PK
-        int jobId FK
-        int personId FK
+        string id PK
+        string jobId FK
+        string personId FK
         string init
         string finaly
         float durationMinutes
-        string date
+        string registerDate
         string status
     }
 
