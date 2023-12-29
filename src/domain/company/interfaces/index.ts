@@ -6,8 +6,8 @@ export interface ICreateCompany {
  execute: (props: ICreateCompanyParams) => Promise<Company>;
 }
 
-export type ICreateCompanyValidator = IUseCaseValidator<Company, ICreateCompanyParams>
-
-
+export interface ICreateCompanyValidator  {
+execute: (params: ICreateCompanyParams) => Promise<Company>;
+}
 
 export type ICreateCompanyParams = Omit<Company, "id">

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "ts-node src/application/Server.ts"
+    "start:dev": "nodemon src/infra/ioc/Server.ts"
   },
   "repository": {
     "type": "git",
@@ -18,12 +18,15 @@
   },
   "homepage": "https://github.com/cristiano182/open-punch-clock#readme",
   "dependencies": {
+    "fast-glob": "^3.3.2",
     "fastify": "^4.25.1",
+    "inversify": "^6.0.2",
+    "reflect-metadata": "^0.2.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "ts-node": "^10.9.2",
     "@types/node": "^20.10.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }
