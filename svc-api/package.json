@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon src/infra/ioc/Server.ts"
+    "start:dev": "nodemon src/infra/server/Server.ts"
   },
   "repository": {
     "type": "git",
@@ -18,15 +18,26 @@
   },
   "homepage": "https://github.com/cristiano182/open-punch-clock#readme",
   "dependencies": {
+    "amqplib": "^0.10.3",
+    "class-fixtures-factory": "^1.6.1",
+    "env-var": "^7.4.1",
     "fast-glob": "^3.3.2",
     "fastify": "^4.25.1",
+    "i": "^0.3.7",
     "inversify": "^6.0.2",
+    "lodash": "^4.17.21",
+    "npm": "^10.2.5",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.2.1",
+    "typeorm-naming-strategies": "^4.1.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/node": "^20.10.5",
+    "@types/amqplib": "^0.10.4",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.10.6",
     "ts-node": "^10.9.2",
+    "typeorm": "^0.3.19",
     "typescript": "^5.3.3"
   }
 }
