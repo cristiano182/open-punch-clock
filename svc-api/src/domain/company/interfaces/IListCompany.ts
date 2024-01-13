@@ -1,10 +1,6 @@
-import { Company } from "../entity/Company";
+import { IPaginationQuery } from '@domain/interfaces'
 
-
-export interface IListCompany {
- execute: () => Promise<Company[]>;
-}
-
-export interface ListCompanyValidator  {
-execute: () => Promise<Company>;
+export interface IListCompany extends IPaginationQuery {
+  name?: string
+  document?: string
 }

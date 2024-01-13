@@ -1,17 +1,16 @@
-import "reflect-metadata";
-import { inject, injectable } from "inversify";
-import { Company } from "@/domain/company/entity/Company";
-import { ICreateCompany, ICreateCompanyParams, ICreateCompanyValidator } from "@/domain/company/interfaces";
-import TYPES from "../../infra/ioc/Types";
+import 'reflect-metadata'
+import { inject, injectable } from 'inversify'
+import { ICompany, ICompanyRepo, ICreateCompany } from '@domain/company/interfaces'
+import TYPES from '../../infra/common/types/Types'
+import Company from '../../domain/company/Company'
+import IUseCase from '@infra/common/interfaces/IUseCase'
 
 @injectable()
-export default class CreateCompany implements ICreateCompany {
-    constructor(
-        @inject(TYPES.CreateCompanyValidator) private createCompanyValidator: ICreateCompanyValidator
-    ) {}
-    async execute(props: ICreateCompanyParams): Promise<Company> {
-    await this.createCompanyValidator.execute(props)
-    return  {name: "teste" } as Company;
-    }
- 
+export default class CreateCompany implements IUseCase<ICreateCompany, ICompany> {
+  constructor(@inject(TYPES.CompanyRepository) private companyRepo: ICompanyRepo) {}
+
+  async execute(props: ICreateCompany): Promise<ICompany> {
+    const company = Company.create(props)
+    return this.companyRepo.create(company.toJson())
+  }
 }

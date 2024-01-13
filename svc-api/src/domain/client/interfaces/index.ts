@@ -1,0 +1,5 @@
+export * from './ICreateClient'
+export * from './IClient'
+export * from './IClientRepo'
+export * from './IUpdateClient'
+export * from './IListClient'

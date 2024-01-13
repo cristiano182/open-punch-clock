@@ -1,21 +1,25 @@
-import TYPES from "../../../@common/Types";
-import { inject, injectable } from "inversify";
-import { DataSource as Connection } from "typeorm";
-import CompanyModel from "../schemas/Company";
-import { Company } from "../../../../domain/company/entity/Company";
-import { ICompanyRepositoriy } from "@domain/company/interfaces";
+import TYPES from '../../../common/types/Types'
+import { inject, injectable } from 'inversify'
+import { DataSource as Connection, FindOptionsWhere } from 'typeorm'
+import CompanyModel from '../schemas/CompanySchema'
+import { ICompany, ICompanyRepo, IListCompany } from '@domain/company/interfaces'
+import { Repo } from './Repo'
+import { IPagination } from '@domain/interfaces'
 
 @injectable()
-export default class CompanyRepository implements ICompanyRepositoriy {
-  public constructor(@inject(TYPES.TypeORMConnection) private conn: Connection) {}
-
-  async create(company: Company): Promise<Company> {
-    return await this.conn.manager.save(CompanyModel, company)
+export default class CompanyRepository extends Repo<ICompany> implements ICompanyRepo {
+  constructor(@inject(TYPES.TypeORMConnection) private _conn: Connection) {
+    super(_conn.getRepository(CompanyModel))
   }
 
+  async search(params: IListCompany): Promise<IPagination<ICompany>> {
+    const { name = '', document = '', limit = 10, skip = 0 } = params
 
-  async find(): Promise<Company[]> {
-    const list = await this.conn.manager.find(CompanyModel)
-    return list as unknown as Company[]
+    const query: FindOptionsWhere<IListCompany> = {
+      ...(name ? { name } : {}),
+      ...(document ? { document } : {}),
+    }
+    const [data, count] = await this.repo.findAndCount({ where: query, skip, take: limit })
+    return { data, count, limit: +limit, skip: +skip }
   }
 }

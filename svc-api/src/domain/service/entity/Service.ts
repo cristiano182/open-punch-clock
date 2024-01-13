@@ -1,5 +1,5 @@
 export class Service {
-    id: string;
-    aggrementId: string;
-    name: string;
+  id: string
+  aggrementId: string
+  name: string
 }

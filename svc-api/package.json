@@ -2,10 +2,25 @@
   "name": "open-punch-clock",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/infra/server/Server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon src/infra/server/Server.ts"
+    "start:dev": "nodemon",
+    "format": "prettier --config .prettierrc ./src/**/*.ts --write",
+    "lint": "eslint ./src/**/*.ts",
+    "lint:fix": "eslint ./src/**/*.ts --fix",
+    "start": "npm run migrate:start && node -r ./prod-paths.js -r dotenv/config ./dist/infra/server/Server.js",
+    "start:debug": "nodemon --watch 'src/' --exec 'ts-node -r dotenv/config -r tsconfig-paths/register src/infra/server/Server.ts' -e ts",
+    "build": "NODE_ENV=development npm run build-ts",
+    "build-ts": "rimraf ./dist && tsc -p tsconfig.build.json",
+    "test": "npm run test:unit && npm run test:integ && npm run test:e2e",
+    "test:unit": "jest ./test/unit --runInBand",
+    "test:integ": "npm run up:dev && npm run migrate:seed && jest ./test/integ --runInBand",
+    "test:e2e": "npm run up && npm run migrate:seed && jest ./test/e2e --runInBand",
+    "test:cov": "jest ./test/unit --coverage --runInBand",
+    "test:coverage": "npx jest test/unit --ci --coverage",
+    "commit": "npx cz",
+    "release": "standard-version",
+    "prettier": "prettier --config .prettierrc ./src/**/*.ts ./test/**/*.ts --write"
   },
   "repository": {
     "type": "git",
@@ -20,24 +35,54 @@
   "dependencies": {
     "amqplib": "^0.10.3",
     "class-fixtures-factory": "^1.6.1",
+    "crypto": "^1.0.1",
     "env-var": "^7.4.1",
     "fast-glob": "^3.3.2",
     "fastify": "^4.25.1",
-    "i": "^0.3.7",
     "inversify": "^6.0.2",
     "lodash": "^4.17.21",
     "npm": "^10.2.5",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.2.1",
     "typeorm-naming-strategies": "^4.1.0",
+    "typescript": "^5.3.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@types/amqplib": "^0.10.4",
+    "@types/jest": "^29.5.11",
     "@types/lodash": "^4.14.202",
-    "@types/node": "^20.10.6",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^26.6.3",
+    "jest-date": "^1.1.4",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "standard-version": "^9.2.0",
     "ts-node": "^10.9.2",
-    "typeorm": "^0.3.19",
-    "typescript": "^5.3.3"
+    "typeorm": "^0.3.19"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "coverage.xml",
+    "indent": 2
   }
 }
