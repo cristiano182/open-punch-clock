@@ -45,14 +45,14 @@ erDiagram
         bool status
     }
 
-    Module {
+    Functionality {
         string id PK
         string name
     }
 
-    ModuleUser {
+    FunctionalityUser {
         string id PK
-        string moduleId FK
+        string funcionalityId FK
         string userId FK
         bool create
         bool read
@@ -79,7 +79,7 @@ erDiagram
     Service      ||--|{ Job : "one to many"
     Register     }|--|| Job : "many to one"
     Register     }|--|| Person : "many to one"
-    User         ||--|| ModuleUser : "one to one"
-    Module       ||--|{ ModuleUser : "one to many"
+    User         ||--|| FunctionalityUser : "one to one"
+    Functionality       ||--|{ FunctionalityUser : "one to many"
 
 ```

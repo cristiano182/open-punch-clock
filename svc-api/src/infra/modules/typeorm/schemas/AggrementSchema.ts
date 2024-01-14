@@ -1,4 +1,15 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm'
+import Client from './ClientSchema'
+import Service from './ServiceSchema'
 
 @Entity('aggrement')
 export default class AggrementSchema extends BaseEntity {
@@ -13,4 +24,10 @@ export default class AggrementSchema extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt!: Date
+
+  @ManyToOne(() => Client, (client) => client.aggrements, { nullable: false })
+  client: Client
+
+  @OneToMany(() => Service, (service) => service.aggrement, { nullable: false })
+  services: Service[]
 }

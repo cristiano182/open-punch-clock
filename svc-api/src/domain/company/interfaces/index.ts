@@ -1,5 +1,5 @@
 export * from './ICreateCompany'
 export * from './ICompany'
 export * from './ICompanyRepo'
-export * from './IUpdateTranslate'
+export * from './IUpdateCompany'
 export * from './IListCompany'

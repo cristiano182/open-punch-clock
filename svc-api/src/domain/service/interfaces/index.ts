@@ -1,0 +1,5 @@
+export * from './IService'
+export * from './ICreateService'
+export * from './IServiceRepo'
+export * from './IUpdateService'
+export * from './IListService'

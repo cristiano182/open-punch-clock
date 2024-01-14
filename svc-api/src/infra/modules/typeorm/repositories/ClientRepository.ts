@@ -18,7 +18,12 @@ export default class ClientRepository extends Repo<IClient> implements IClientRe
     const query: FindOptionsWhere<IListClient> = {
       ...(name ? { name } : {}),
     }
-    const [data, count] = await this.repo.findAndCount({ where: query, skip, take: limit })
+    const [data, count] = await this.repo.findAndCount({
+      where: query,
+      skip,
+      take: limit,
+      relations: ['company', 'aggrements'],
+    })
     return { data, count, limit: +limit, skip: +skip }
   }
 }

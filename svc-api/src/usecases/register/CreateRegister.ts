@@ -1,0 +1,31 @@
+import 'reflect-metadata'
+import { inject, injectable } from 'inversify'
+
+import TYPES from '../../infra/common/types/Types'
+import Register from '../../domain/register/Register'
+import { ICreateRegister, IRegister, IRegisterRepo } from '../../domain/register'
+import IUseCase from '@infra/common/interfaces/IUseCase'
+import { IPersonRepo } from '@domain/person'
+import { IJobRepo } from '@domain/job'
+
+export type ICreateRegisterUseCaseParams = ICreateRegister
+export type ICreateRegisterUseCaseResponse = IRegister
+
+@injectable()
+export default class CreateRegister implements IUseCase<ICreateRegisterUseCaseParams, ICreateRegisterUseCaseResponse> {
+  constructor(
+    @inject(TYPES.RegisterRepository) private registerRepo: IRegisterRepo,
+    @inject(TYPES.PersonRepository) private personRepo: IPersonRepo,
+    @inject(TYPES.JobRepository) private jobRepo: IJobRepo,
+  ) {}
+
+  async execute(props: ICreateRegisterUseCaseParams): Promise<ICreateRegisterUseCaseResponse> {
+    const person = await this.personRepo.findById(String(props.person))
+    const job = await this.jobRepo.findById(String(props.job))
+
+    if (!person || !job) throw new Error()
+
+    const register = Register.create({ ...props, person, job })
+    return this.registerRepo.create(register.toJson())
+  }
+}

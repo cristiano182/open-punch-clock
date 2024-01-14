@@ -1,4 +1,15 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm'
+import RegisterSchema from './RegisterSchema'
+import Service from './ServiceSchema'
 
 @Entity('job')
 export default class JobSchema extends BaseEntity {
@@ -16,4 +27,10 @@ export default class JobSchema extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt!: Date
+
+  @ManyToOne(() => Service, (service) => service.jobs, { nullable: false })
+  service: Service
+
+  @OneToMany(() => RegisterSchema, (register) => register.person)
+  registers: RegisterSchema[]
 }

@@ -1,15 +1,25 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 import { RegisterStatus } from '../../../../domain/register/enum/index'
+import Job from './JobSchema'
+import Person from './PersonSchema'
 @Entity('register')
 export default class RegisterSchema extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string
 
   @Column()
-  init!: string
+  start!: Date
 
   @Column()
-  finally!: string
+  end!: Date
 
   @Column()
   durationMinutes!: number
@@ -25,4 +35,10 @@ export default class RegisterSchema extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt!: Date
+
+  @ManyToOne(() => Person, (person) => person.registers, { nullable: false })
+  person: Person
+
+  @ManyToOne(() => Job, (job) => job.registers, { nullable: false })
+  job: Job
 }

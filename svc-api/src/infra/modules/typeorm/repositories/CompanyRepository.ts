@@ -19,7 +19,12 @@ export default class CompanyRepository extends Repo<ICompany> implements ICompan
       ...(name ? { name } : {}),
       ...(document ? { document } : {}),
     }
-    const [data, count] = await this.repo.findAndCount({ where: query, skip, take: limit })
+    const [data, count] = await this.repo.findAndCount({
+      where: query,
+      skip,
+      take: limit,
+      relations: ['clients', 'users', 'persons'],
+    })
     return { data, count, limit: +limit, skip: +skip }
   }
 }

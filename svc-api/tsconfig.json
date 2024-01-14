@@ -1,5 +1,5 @@
 {
-  "compilerOptions": {             
+  "compilerOptions": {
     "module": "commonjs",
     "lib": ["es6", "dom"],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
     "esModuleInterop": true,
@@ -21,9 +21,9 @@
     "types": ["reflect-metadata"],                                /* Specify type package names to be included without being referenced in a source file. */                        /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
      // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
      "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
- 
+
      /* Type Checking */
-    "strict": true,     
+    "strict": true,
     "strictPropertyInitialization": false,                                   /* Enable all strict type-checking options. */
   },
   "include": ["/**/*"],

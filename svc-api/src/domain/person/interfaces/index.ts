@@ -1,0 +1,5 @@
+export * from './IPerson'
+export * from './ICreatePerson'
+export * from './IPersonRepo'
+export * from './IUpdatePerson'
+export * from './IListPerson'

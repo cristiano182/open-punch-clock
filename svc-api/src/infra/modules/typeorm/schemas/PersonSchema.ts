@@ -1,4 +1,15 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm'
+import Company from './CompanySchema'
+import Register from './RegisterSchema'
 
 @Entity('person')
 export default class PersonSchema extends BaseEntity {
@@ -18,6 +29,9 @@ export default class PersonSchema extends BaseEntity {
   phone!: string
 
   @Column()
+  password!: string
+
+  @Column()
   status!: boolean
 
   @CreateDateColumn()
@@ -25,4 +39,10 @@ export default class PersonSchema extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt!: Date
+
+  @ManyToOne(() => Company, (company) => company.persons, { nullable: false })
+  company: Company
+
+  @OneToMany(() => Register, (register) => register.person)
+  registers: Register[]
 }

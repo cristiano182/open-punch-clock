@@ -1,5 +1,5 @@
 import { IRepo } from '@domain/interfaces/IRepo'
-import { ObjectLiteral, Repository } from 'typeorm'
+import { ObjectLiteral, Repository, FindOptionsWhere } from 'typeorm'
 
 export class Repo<T extends ObjectLiteral> implements IRepo<T> {
   constructor(protected readonly repo: Repository<T>) {}
@@ -16,7 +16,8 @@ export class Repo<T extends ObjectLiteral> implements IRepo<T> {
     await this.repo.delete(id)
   }
 
-  async find(params: Partial<T>): Promise<T | null> {
-    return this.repo.findOne({ where: params })
+  async findById(id: string): Promise<T | null> {
+    const query: FindOptionsWhere<unknown> = { id }
+    return this.repo.findOneBy(query)
   }
 }

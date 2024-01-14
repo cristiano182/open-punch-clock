@@ -4,6 +4,10 @@ export type IHeaders = {
   Authorization: string
 }
 
+export type IParamsDefault = {
+  id: string
+}
+
 export type MyRequest<IBody = unknown, IParams = unknown, IQuery = unknown> = FastifyRequestType<
   IParams,
   IQuery,

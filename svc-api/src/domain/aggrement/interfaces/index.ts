@@ -1,0 +1,5 @@
+export * from './IAggrement'
+export * from './ICreateAggrement'
+export * from './IAggrementRepo'
+export * from './IUpdateAggrement'
+export * from './IListAggrement'
