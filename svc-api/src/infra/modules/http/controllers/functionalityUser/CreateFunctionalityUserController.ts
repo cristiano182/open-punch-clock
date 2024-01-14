@@ -10,7 +10,6 @@ import { MyRequest } from '../../../../common/interfaces/IHttpRequest'
 import { ICreateFunctionalityUser } from '@domain/functionalityUser'
 import CreateFunctionalityUser from '@usecases/functionalityUser/CreateFunctionalityUser'
 
-
 @injectable()
 export default class CreateFunctionalityUserController implements IController {
   constructor(

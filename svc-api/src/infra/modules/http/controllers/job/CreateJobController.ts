@@ -18,14 +18,10 @@ export default class CreateJobController implements IController {
   ) {}
 
   async execute(httpInstance: any): Promise<FastifyInstance> {
-    return httpInstance.post(
-      '/',
-      CreateJobSchema,
-      async (request: MyRequest<ICreateJob>, reply: FastifyReply) => {
-        await this.authentication.execute(request)
-        const params = request.body
-        reply.code(201).send(await this.createJob.execute(params))
-      },
-    )
+    return httpInstance.post('/', CreateJobSchema, async (request: MyRequest<ICreateJob>, reply: FastifyReply) => {
+      await this.authentication.execute(request)
+      const params = request.body
+      reply.code(201).send(await this.createJob.execute(params))
+    })
   }
 }

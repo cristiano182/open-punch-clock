@@ -22,7 +22,7 @@ export default class CreateFunctionalityUser
   ) {}
 
   async execute(props: ICreateFunctionalityUserUseCaseParams): Promise<ICreateFunctionalityUserUseCaseResponse> {
-    const user = await this.userRepo.findById(String(props.user ))
+    const user = await this.userRepo.findById(String(props.user))
     const functionality = await this.functionalityRepo.findById(String(props.functionality))
 
     if (!user || !functionality) throw new Error()

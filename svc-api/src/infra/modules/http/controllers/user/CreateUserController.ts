@@ -18,14 +18,10 @@ export default class CreateUserController implements IController {
   ) {}
 
   async execute(httpInstance: any): Promise<FastifyInstance> {
-    return httpInstance.post(
-      '/',
-      CreateUserSchema,
-      async (request: MyRequest<ICreateUser>, reply: FastifyReply) => {
-        await this.authentication.execute(request)
-        const params = request.body
-        reply.code(201).send(await this.createUser.execute(params))
-      },
-    )
+    return httpInstance.post('/', CreateUserSchema, async (request: MyRequest<ICreateUser>, reply: FastifyReply) => {
+      await this.authentication.execute(request)
+      const params = request.body
+      reply.code(201).send(await this.createUser.execute(params))
+    })
   }
 }
