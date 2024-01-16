@@ -2,7 +2,7 @@ import { IRepo } from '@domain/interfaces/IRepo'
 import { ObjectLiteral, Repository, FindOptionsWhere } from 'typeorm'
 
 export class Repo<T extends ObjectLiteral> implements IRepo<T> {
-  constructor(protected readonly repo: Repository<T>) {}
+  constructor(protected readonly repo: Repository<any>) {}
 
   async create(entity: T): Promise<T> {
     return this.repo.save(entity)

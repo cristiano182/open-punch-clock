@@ -1,0 +1,38 @@
+[
+  {
+    "id": "4387cfbe-078f-473f-ba2e-3487ada4196d",
+    "name": "aggrement"
+  },
+  {
+    "id": "0e7a1a95-6f46-4f68-adac-9ef8b1558d60",
+    "name": "client"
+  },
+  {
+    "id": "c56b85e9-16de-4453-a938-41706eb2a133",
+    "name": "company"
+  },
+  {
+    "id": "1f7830a3-9067-45e6-bec1-50759b06b496",
+    "name": "functionalityUser"
+  },
+  {
+    "id": "ce1fc801-5970-40d3-ad4a-621ef00fa2d3",
+    "name": "job"
+  },
+  {
+    "id": "bb98e956-3228-40fb-9bee-b73c6b5ec615",
+    "name": "person"
+  },
+  {
+    "id": "8103728e-c34b-4496-b23f-acfdb1a39d0a",
+    "name": "register"
+  },
+  {
+    "id": "3103728e-c34b-4496-b23f-acfdb1a39d0c",
+    "name": "service"
+  },
+  {
+    "id": "2103728e-c34b-4496-b23f-acfdb1a39d0b",
+    "name": "user"
+  }
+]

@@ -1,10 +1,10 @@
 import 'reflect-metadata'
 import TYPES from '../../common/types/Types'
 import { Container, injectable } from 'inversify'
-import { DataSource } from 'typeorm'
-import datasource from './configs/datasource'
 import readFilesFromPath from '../../utils/path'
 import Module from '../../global/interfaces/IModule'
+import datasource from './configs/datasource'
+import { DataSource } from 'typeorm'
 
 @injectable()
 export default class TypeORMModule extends Module {
@@ -19,7 +19,7 @@ export default class TypeORMModule extends Module {
   }
 
   async configurations(): Promise<void> {
-    const connection = await new DataSource(datasource).initialize()
+    const connection = await datasource.initialize()
     this.container.bind<DataSource>(TYPES.TypeORMConnection).toConstantValue(connection)
     await connection.runMigrations()
     return
