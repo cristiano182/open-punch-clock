@@ -12,7 +12,7 @@ export default class Company {
     entity.id = data.id || randomUUID()
     entity.name = data.name
     entity.document = data.document
-    entity.paymentStatus = data.paymentStatus || CompanyPaymentStatusEnum.FREE_TRIAL
+    entity.paymentStatus = CompanyPaymentStatusEnum.FREE_TRIAL
     return entity
   }
 

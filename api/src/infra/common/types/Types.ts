@@ -7,6 +7,8 @@ const TYPES = {
   CompanyStatus: Symbol.for('CompanyStatus'),
   UpdateCompany: Symbol.for('UpdateCompany'),
 
+  Login: Symbol.for('Login'),
+
   CreateAggrement: Symbol.for('CreateAggrement'),
   ListAggrement: Symbol.for('ListAggrement'),
 

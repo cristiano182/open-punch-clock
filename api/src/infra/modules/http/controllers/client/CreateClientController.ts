@@ -22,9 +22,9 @@ export default class CreateClientController implements IController {
       '/',
       CreateClientSchema,
       async (request: MyRequest<ICreateClient>, reply: FastifyReply) => {
-        await this.authentication.execute(request)
+        const user = await this.authentication.execute(request)
         const params = request.body
-        reply.code(201).send(await this.createClient.execute(params))
+        reply.code(201).send(await this.createClient.execute({...params, ...user}))
       },
     )
   }

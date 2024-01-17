@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "module": "commonjs",
     "lib": ["es6", "dom"],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
     "esModuleInterop": true,
@@ -8,8 +10,6 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "outDir": "dist",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
