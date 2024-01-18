@@ -17,7 +17,9 @@ export default class LoginController implements IController {
   async execute(httpInstance: any): Promise<FastifyInstance> {
     return httpInstance.post('/', LoginSchema, async (request: MyRequest<ILoginUseCaseParams>, reply: FastifyReply) => {
       const params = request.body
-      reply.code(201).send(await this.loginUsecase.execute(params))
+      const response  = await this.loginUsecase.execute(params)
+      console.log("response------", response)
+      reply.code(201).send(response)
     })
   }
 }

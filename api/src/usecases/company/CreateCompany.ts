@@ -11,6 +11,8 @@ import FunctionalityUser from '@domain/functionalityUser/FunctionalityUser'
 import { IFunctionalityRepo } from '@domain/functionality'
 import { ITransaction, ITransactionRepo } from '@domain/transaction/ITransactionRepo'
 import Functionality from '@domain/functionality/Functionality'
+import jwt from "jsonwebtoken"
+import SECRETS  from '../../infra/server/env'
 
 @injectable()
 export default class CreateCompany implements IUseCase<ICreateCompany, ICompany> {
@@ -33,7 +35,7 @@ export default class CreateCompany implements IUseCase<ICreateCompany, ICompany>
     if(!isEmpty(users.data)) throw new Error('user email already exists')
 
     const functionalitys = await this.functionalityRepository.search({})
-    const defaultPassword = 'newCompany@2024'
+    const defaultPassword = jwt.sign('newCompany@2024', SECRETS.JWT_SECRET)
 
     const company = Company.create(props)
     const user = User.create({email, password: defaultPassword, company: company.toJson(), status: true})
