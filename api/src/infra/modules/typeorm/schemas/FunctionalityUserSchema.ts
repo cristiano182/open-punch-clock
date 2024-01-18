@@ -3,14 +3,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
+  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
 import FunctionalitySchema from './FunctionalitySchema'
 import User from './UserSchema'
 
-@Entity('functionalityUser')
+@Entity('functionalityuser')
 export default class FunctionalityUserSchema extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string
@@ -33,9 +33,9 @@ export default class FunctionalityUserSchema extends BaseEntity {
   @UpdateDateColumn()
   updatedAt!: Date
 
-  @OneToOne(() => User, (user) => user.functionalityUser, { nullable: false })
+  @ManyToMany(() => User, (user) => user.functionalityUser, { nullable: false })
   user: User
 
-  @OneToOne(() => FunctionalitySchema, (functionality) => functionality.functionalityUser, { nullable: false })
+  @ManyToMany(() => FunctionalitySchema, (functionality) => functionality.functionalityUser, { nullable: false })
   functionality: FunctionalitySchema
 }

@@ -3,6 +3,7 @@ erDiagram
     Company {
         string id PK
         string name
+        string email
         string document
     }
     Client {

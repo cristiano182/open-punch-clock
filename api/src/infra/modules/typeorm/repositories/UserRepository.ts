@@ -22,7 +22,7 @@ export default class UserRepository extends Repo<IUser> implements IUserRepo {
       where: query,
       skip,
       take: limit,
-      relations: ['aggrement', 'jobs'],
+      relations: ['company'],
     })
     return { data, count, limit: +limit, skip: +skip }
   }

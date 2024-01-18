@@ -2,15 +2,17 @@ import { randomUUID } from 'crypto'
 import { CompanyPaymentStatusEnum, ICompany, ICreateCompany, IUpdateCompany } from './interfaces'
 
 export default class Company {
-  private id: string
-  private name: string
-  private document: string
-  private paymentStatus: CompanyPaymentStatusEnum
+  id: string
+  name: string
+  email: string
+  document: string
+  paymentStatus: CompanyPaymentStatusEnum
 
   static create(data: ICreateCompany): Company {
     const entity = new Company()
     entity.id = data.id || randomUUID()
     entity.name = data.name
+    entity.email = data.email
     entity.document = data.document
     entity.paymentStatus = CompanyPaymentStatusEnum.FREE_TRIAL
     return entity
@@ -27,6 +29,7 @@ export default class Company {
     return {
       id: this.id,
       name: this.name,
+      email: this.email,
       document: this.document,
       paymentStatus: this.paymentStatus,
     }

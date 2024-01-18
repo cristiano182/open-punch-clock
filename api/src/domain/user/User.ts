@@ -3,11 +3,11 @@ import { randomUUID } from 'crypto'
 import { IUser, ICreateUser, IUpdateUser } from './interfaces'
 
 export default class User {
-  private id: string
-  private email: string
-  private status: boolean
-  private password: string
-  private company: ICompany
+   id: string
+   email: string
+   status: boolean
+   password: string
+   company: ICompany
 
   static create(data: ICreateUser): User {
     const entity = new User()

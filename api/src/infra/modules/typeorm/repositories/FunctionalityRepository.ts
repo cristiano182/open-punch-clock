@@ -22,7 +22,7 @@ export default class FunctionalityRepository extends Repo<IFunctionality> implem
       where: query,
       skip,
       take: limit,
-      relations: ['functionalityUser'],
+      relations: [],
     })
     return { data, count, limit: +limit, skip: +skip }
   }

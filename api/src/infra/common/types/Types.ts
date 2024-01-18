@@ -44,6 +44,7 @@ const TYPES = {
   UserRepository: Symbol.for('UserRepository'),
   FunctionalityRepository: Symbol.for('FunctionalityRepository'),
   FunctionalityUserRepository: Symbol.for('FunctionalityUserRepository'),
+  TransactionRepository: Symbol.for('TransactionRepository'),
 
   //RABBITMQ
   MessageChannel: Symbol.for('MessageChannel'),
