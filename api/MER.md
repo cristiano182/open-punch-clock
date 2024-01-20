@@ -65,10 +65,8 @@ erDiagram
         string id PK
         string jobId FK
         string personId FK
-        string init
-        string finaly
-        float durationMinutes
-        string registerDate
+        string start
+        string end
         string status
     }
 

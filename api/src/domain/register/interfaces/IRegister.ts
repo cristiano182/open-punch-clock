@@ -8,7 +8,5 @@ export interface IRegister {
   end: Date
   job: IJob
   person: IPerson
-  durationMinutes: number
-  registerDate: Date
   status: RegisterStatus
 }

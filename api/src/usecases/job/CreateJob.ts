@@ -21,7 +21,6 @@ export default class CreateJob implements IUseCase<ICreateJobUseCaseParams, ICre
     const service = await this.serviceRepo.findById(String(props.service))
 
     if (!service) throw new Error()
-
     const job = Job.create({ ...props, service })
     return this.jobRepo.create(job.toJson())
   }

@@ -22,9 +22,9 @@ export default class CreatePersonController implements IController {
       '/',
       CreatePersonSchema,
       async (request: MyRequest<ICreatePerson>, reply: FastifyReply) => {
-        await this.authentication.execute(request)
+        const user =  await this.authentication.execute(request)
         const params = request.body
-        reply.code(201).send(await this.createPerson.execute(params))
+        reply.code(201).send(await this.createPerson.execute({...params, user}))
       },
     )
   }

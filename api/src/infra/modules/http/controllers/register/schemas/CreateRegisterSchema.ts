@@ -3,9 +3,12 @@ export const CreateRegisterSchema = {
     body: {
       type: 'object',
       properties: {
-        name: { type: 'string' },
+        job: { type: 'string' },
+        person: { type: 'string' },
+        start: { type: 'string' },
+        end: { type: 'string' },
       },
-      required: ['name'],
+      required: ['job', 'person'],
     },
   },
 }

@@ -12,9 +12,7 @@ export interface IAuthentication {
   execute(request: MyRequest<unknown>): Promise<IAuthenticationResponse>
 }
 
-export type IAuthenticationResponse = {
-  user: IUser
-}
+export interface IAuthenticationResponse extends IUser {}
 
 
 @injectable()
@@ -35,6 +33,6 @@ export default class Authentication implements IAuthentication {
     if(!company) throw new Error('company not found')
     if(company.paymentStatus === CompanyPaymentStatusEnum.DEFAULTER) throw new Error('company has a pending payment')
 
-    return { user }
+    return user
   }
 }

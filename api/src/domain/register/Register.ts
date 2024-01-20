@@ -20,8 +20,6 @@ export default class Register {
     entity.id = data.id || randomUUID()
     entity.start = data.start
     entity.end = data.end
-    entity.durationMinutes = data.durationMinutes
-    entity.registerDate = data.registerDate
     entity.status = data.status
     entity.job = data.job
     entity.person = data.person
@@ -39,8 +37,6 @@ export default class Register {
       id: this.id,
       start: this.start,
       end: this.end,
-      durationMinutes: this.durationMinutes,
-      registerDate: this.registerDate,
       status: this.status,
       job: this.job,
       person: this.person,

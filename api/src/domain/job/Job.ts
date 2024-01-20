@@ -13,6 +13,7 @@ export default class Job {
     entity.id = data.id || randomUUID()
     entity.name = data.name
     entity.service = data.service
+    entity.durationMinutes = data.durationMinutes
     return entity
   }
 

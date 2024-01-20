@@ -4,8 +4,10 @@ export const CreateJobSchema = {
       type: 'object',
       properties: {
         name: { type: 'string' },
+        durationMinutes: { type: 'number' },
+        service: { type: 'string' },
       },
-      required: ['name'],
+      required: ['name', 'durationMinutes', 'service'],
     },
   },
 }
